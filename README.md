@@ -1,24 +1,23 @@
 # THREE-Cesium-io
-This software is an interactive 4D Transactional Reporting System based upon location, time and data. Utilize CesiumJS to show location and handle time. Utilize THREEjs to display details of your data. 
+This software is an interactive 4D Transactional Reporting System based upon location, time and data. Utilizing CesiumJS to show location and handle time. Utilizing THREEjs to display details of your data Summarizing your data the over the entire time period. Interactive: Clicking an item in one system will make changes in the other system.
 
-Interactive  THREEjs-CesiumJS-io
 
 
 This project started with Cesium-threejs-experiment by Wilson Mukar. Please read the original posts here: https://cesium.com/blog/2017/10/23/integrating-cesium-with-threejs/
 
 There are two versions of this software: This version has the ability to communicate with the server via Socket.io. For the version that has no communication; Visit: https://github.com/AllToVR/THREE-Cesium
 
-This software is an interactive 4D Transactional Reporting System based upon location, time and data. Utilize CesiumJS to show location and handle time. Utilize THREEjs to display details of your data. Summarize your data the over the entire time period. Interactive: Clicking an item in one system will make changes in the other system.
- 
-Live demonstrations can found here: http://mib.alltovr.com/apps/itc/three-cesium-io.html
+Live demonstrations can found here: http://mib.alltovr.com/apps/itc/three-cesium-ioAutoLoad.html
 
-This is the advanced version so you can download the required CZML files from the menu; Choose Option >> Download Sample Data files.
+This is the advanced version so you can download the CZML files from the menu; Choose Option >> Download Sample Data files.
 
-Now the details:
-Location: We are dealing with every legal address worldwide; so your data is sorted by: Countries, States and zip codes.
+Location: 
+We are dealing with every legal address worldwide; so your data is sorted by: Countries, States and zip codes.
+
 A primary goal of this project was to have EVERYTHING loadable from a “local” CZML file. How you build your file is up to you. This version has websockets and you send your data that way.
 
 First order of business was to have cesium and threejs data in the same CZML file (3ZML). This required me to parse the file myself. I pull out the cesium data packets and separate them by countries, states,  zip codes, transactions and then everything else. Each one has its own czmlDataSource. There maybe 100+ 3ZML files to load….. All THREEjs data packets create the THREEjs scene on the fly…
+
 Another challenge was real-time rendering. With so many 3ZML files; the system is always building the scene and never returns to the renderer. So I build a timer to delay making the next 3ZML file long enough to allow the renders to do their job. One day I will find a better way…
 
 Picking: The key to making CesiumJS and THREEjs interactive is knowing the ID of the other system. Both systems use a 6 part ID separated by a “-“; “system-subType-category-subcategory-vsubcategory-transaction”. System is “cml” or “three” (I am also interactive with AltSpaceVR). SubType is “Lbl”,”cat”,”sub”,”vsub” and ”trans”. When you choose an entity in CesiumJS; I simply reposition the THREEjs camera in front of that THREEjs object. When you click a THREEjs object; I have CesiumJS FlyTo the location. Zip codes and states FlyTo a different Altitude. Transactions have an extra line to show the infobox. In the THREEjs scene; the plane on the graph representing that transaction is highlighted.
@@ -34,31 +33,46 @@ Server Code: Serverinfo.txt has the code to be inserted into your node server.
 c3data1.js is the program that contains your processing code.
 
 Installation:
-BingKey			You will need to get your own Bing key…
-Location of script files		This will be the location of the files on your server. Search and replace “YourSite” with the name of your site.
+
+BingKey:  You will need to get your own Bing key…
+
+Location of script files:  This will be the location of the files on your server. Search and replace “YourSite” with the name of your site.
 
 Here are the basic operating instructions of the HTML screen:
 
 Click on “Load Local Files” button. You can load all of them or just select the ones you want to display.
 
 Globe:
-Bottom right of globe is the “Full Screen” button. This system is best viewed in this mode!
-Click on the ? for instruction on mouse controls
-Transactions will appear on the globe (blue balloon) based upon the date and time.
+
+Bottom right of the globe is the “Full Screen” button. This system is best viewed in this mode.
+
+Bottom left is your time controls. You can change the time line anyway you like. Transactions will appear on the globe (blue balloon) based upon the date and time.
+
+Click on the ? for instruction on mouse controls.
+
 Clicking on a label will zoom to that chart.
+
 Clicking on a transaction (blue balloon) will zoom to that chart and highlight the transaction details.
-Clicking on the little camera in the top left corner of the transaction details box; will zoom to the address.
+
+Clicking on the little camera in the top left corner of the transaction details; will zoom to the address.
+While the transaction details is open; the camera will always “LookAT” that address when you pan around. Close the transaction details to return to movement of the globe.
 
 The Chart Area:
-Clicking on a chart will zoom the globe.
+
+Clicking on a chart will zoom the globe the corresponding item.
 Clicking on a transaction (small box) will zoom the globe and display the transaction details.
 
 Controls:
+
 Left click + drag = rotate
+
 Right click + drag = left, right, up, down
+
 Scroll wheel = zoom in/out
 
 Conclusion:
 This project will drastically improve the quality of “Data Presentation” by bringing together the best of both 3D worlds used in today’s technology.
+
 I look forward to the day when all of this functionality is incorporated into CesiumJS and THREEjs masters.
+
 
