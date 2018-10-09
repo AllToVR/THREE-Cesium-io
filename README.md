@@ -18,6 +18,11 @@ A primary goal of this project was to have EVERYTHING loadable from a “local�
 
 First order of business was to have cesium and threejs data in the same CZML file (3ZML). This required me to parse the file myself. I pull out the cesium data packets and separate them by countries, states,  zip codes, transactions and then everything else. Each one has its own czmlDataSource. There maybe 100+ 3ZML files to load….. All THREEjs data packets create the THREEjs scene on the fly…
 
+Automatic loading of supporting 3ZML files: Each file is this own entity i.e. zipcodes are supporting files to a state; so I create an external source packet.
+
+Included is the file “three-cesium-ioAutoLoad.html”. When the variable “loadSample” is set to ‘true”; as the system is loading a 3ZML file it will automatically request the supporting file(s) from the server.
+
+
 Another challenge was real-time rendering. With so many 3ZML files; the system is always building the scene and never returns to the renderer. So I build a timer to delay making the next 3ZML file long enough to allow the renders to do their job. One day I will find a better way…
 
 Picking: The key to making CesiumJS and THREEjs interactive is knowing the ID of the other system. Both systems use a 6 part ID separated by a “-“; “system-subType-category-subcategory-vsubcategory-transaction”. System is “cml” or “three” (I am also interactive with AltSpaceVR). SubType is “Lbl”,”cat”,”sub”,”vsub” and ”trans”. When you choose an entity in CesiumJS; I simply reposition the THREEjs camera in front of that THREEjs object. When you click a THREEjs object; I have CesiumJS FlyTo the location. Zip codes and states FlyTo a different Altitude. Transactions have an extra line to show the transaction details. In the THREEjs scene; the plane on the graph representing that transaction is highlighted.
