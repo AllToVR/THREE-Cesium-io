@@ -82,12 +82,6 @@ body {
 <script>
 //
 var socket = io('http://YourSite.com', { path: '/socket.io'})
-socket.emit( 'getBingKey')
-//
-socket.on('setBingKey', function( key){
-	console.log('key = ' + key)
-//	Cesium.BingMapsApi.defaultKey = key
-})
 //
 socket.on('loadSampleZip', function( dataIn, position, source, nameToLoad){
 	czmlToMake[ czmlToMake.length] = {results: JSON.parse( dataIn), id: nameToLoad, sep: '-'}
@@ -513,7 +507,7 @@ function makeCZML( results, inName, sep){
 									if( item.external.eventSource !== undefined){
 										if( itemId[ subType] === 'THREE.JS'){
 											if( loadSample){
-												socket.emit( 'loadSampleZip9', item.external.eventSource, item.position, source)
+												socket.emit( 'load3ZMLData', item.external.eventSource, item.position, source)
 											}
 										}
 									}
@@ -904,7 +898,7 @@ window.onload = function(){
 	}, Cesium.ScreenSpaceEventType.LEFT_CLICK);
 	//
 	loadSample = true
-	socket.emit( 'loadSampleZip9', 'us---','','')
+	socket.emit( 'load3ZMLData', 'us---','','')
 }
 //
 function onDocumentMouseClick( event ) {
