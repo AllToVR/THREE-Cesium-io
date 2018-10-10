@@ -1,7 +1,7 @@
 # THREE-Cesium-io
 This software is an interactive 4D Transactional Reporting System based upon location, time and data. Utilizing CesiumJS to show location and handle time. Utilizing THREEjs to display details of your data Summarizing your data the over the entire time period. Interactive: Clicking an item in one system will make changes in the other system.
 
-
+<img src="http://mib.alltovr.com/images/three-cesium.jpg" alt="AllToVr.com">
 
 This project started with Cesium-threejs-experiment by Wilson Mukar. Please read the original posts here: https://cesium.com/blog/2017/10/23/integrating-cesium-with-threejs/
 
