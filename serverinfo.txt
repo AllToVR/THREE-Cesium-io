@@ -12,3 +12,7 @@ socket.on('sendSampleZip', function(){
 	c3data1.sendSampleZip( socket)
 });
 
+socket.on('load3ZMLData', function(){
+	c3data1.load3ZMLData( socket)
+});
+
