@@ -1,8 +1,9 @@
-router.get('/apps/itc/*.*', function(req, res) {
+router.get('/apps/YourSiteFolder/*.*', function(req, res) {
 	  res.sendFile(req.path, { "root": __dirname });
 });
 
-var c3data1 = require('./csj/c3data1.js');
+var c3data1 = require('./javaScriptFolder/c3data1.js');
+
 socket.on('sendFullSampleZip', function(){
 	c3data1.sendFullSampleZip( socket)
 });
