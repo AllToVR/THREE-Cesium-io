@@ -85,7 +85,7 @@ var socket = io('http://YourSite.com', { path: '/socket.io'})
 //
 socket.on('doneCZML', function( dataIn, fileName){
 	console.log('doneCZML1 = ' + fileName)
-	download(dataIn, fileName, 'czml')
+	download(dataIn, fileName, '3zml')
 });
 //Function to download data to a file
 function download(data, filename, type) {
@@ -777,7 +777,7 @@ window.onload = function(){
 		text : 'Load local Reports',
 		onselect : function() {
 			document.getElementById('fileInput').setAttribute("onchange", "javascript:handleIt()")
-			document.getElementById('fileInput').setAttribute("accept", ".czml")
+			document.getElementById('fileInput').setAttribute("accept", ".3zml")
 			document.getElementById('fileInput').click()
 			menu.selectedIndex = 0
 		}
